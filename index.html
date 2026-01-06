@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ma'had Al-Muqoddasah Li Tahfizhil  Qur'an</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .hover\:text-yellow-500:hover { color: #f8ca0f; }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans leading-relaxed text-gray-800 antialiased">
+
+<header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-20">
+            <!-- Logo & Teks -->
+            <a href="tentang.html" class="flex items-center space-x-3">
+                <img src="logo.png" alt="Ma'had Al-Muqoddasah Logo" class="h-12 w-auto">
+                <div class="leading-tight">
+                    <span class="text-xl font-bold text-blue-900">Ma'had</span><br>
+                    <span class="text-lg font-bold text-blue-900">Al-Muqoddasah</span><br>
+                    <span class="text-lg font-bold text-yellow-400">Li Tahfizhil Qu'an</span>
+                </div>
+            </a>
+
+            <!-- Menu Desktop -->
+            <nav class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                <a href="index.html" class="text-gray-700 hover:text-yellow-500 font-medium transition">Home</a>
+                <a href="#berita-utama" class="text-gray-700 hover:text-yellow-500 font-medium transition">Berita</a>
+                <a href="#pengumuman" class="text-gray-700 hover:text-yellow-500 font-medium transition">Pengumuman</a>
+                <a href="#kabar-santri" class="text-gray-700 hover:text-yellow-500 font-medium transition">Kabar Santri</a>
+                <a href="#kajian" class="text-gray-700 hover:text-yellow-500 font-medium transition">Kajian</a>
+                <a href="#galeri" class="text-gray-700 hover:text-yellow-500 font-medium transition">Galeri</a>
+                <a href="tentang.html" class="text-gray-700 hover:text-yellow-500 font-medium transition">Profil</a>
+                <a href="https://instabio.cc/almuqoddasah25" class="bg-yellow-500 text-blue-900 font-bold px-6 py-3 rounded-lg hover:bg-yellow-400 transition">Kontak</a>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button x-data @click="$dispatch('open-mobile-menu')" class="md:hidden text-gray-700">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu (Sidebar dari kanan) -->
+    <div x-data="{ open: false }" @open-mobile-menu.window="open = true" class="md:hidden">
+        <!-- Overlay -->
+        <div x-show="open" class="fixed inset-0 bg-black bg-opacity-50 z-50" @click="open = false"></div>
+        
+        <!-- Sidebar -->
+        <div x-show="open" 
+             class="fixed right-0 top-0 h-full w-64 bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out" 
+             :class="open ? 'translate-x-0' : 'translate-x-full'">
+            <div class="p-6">
+                <button @click="open = false" class="mb-8 text-gray-700">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+                <nav class="space-y-6">
+                    <a href="index.html" class="block text-lg font-medium text-gray-700 hover:text-yellow-500 transition">Home</a>
+                    <a href="#berita-utama" class="block text-lg font-medium text-gray-700 hover:text-yellow-500 transition">Berita</a>
+                    <a href="#pengumuman" class="block text-lg font-medium text-gray-700 hover:text-yellow-500 transition">Pengumuman</a>
+                    <a href="#kabar-santri" class="block text-lg font-medium text-gray-700 hover:text-yellow-500 transition">Kabar Santri</a>
+                    <a href="#kajian" class="block text-lg font-medium text-gray-700 hover:text-yellow-500 transition">Kajian</a>
+                    <a href="#galeri" class="block text-lg font-medium text-gray-700 hover:text-yellow-500 transition">Galeri</a>
+                    <a href="tentang.html" class="block text-lg font-medium text-gray-700 hover:text-yellow-500 transition">Profil</a>
+                    <a href="https://instabio.cc/almuqoddasah25" class="block bg-yellow-500 text-blue-900 font-bold px-6 py-3 rounded-lg text-center hover:bg-yellow-400 transition">Kontak</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Berita Utama (Featured Berita MQ - Ma'had Al-Muqoddasah) -->
+<section id="berita-utama" class="container mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold text-blue-900 mb-8 text-center md:text-left">Berita Utama</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Artikel Utama Besar -->
+        <div class="md:col-span-2">
+            <a href="https://www.instagram.com/p/DQ5wsLGkoNB/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+               target="_blank"
+               class="group block rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                <div class="relative">
+                    <img src="img/Syeikh Muhammad Ibrahim Al-Asymawi Guru Besar Hadist dan Ilmu Qiroat Al-Azhar Mesir.jpg" 
+                         alt="Kunjungan Syeikh Muhammad Ibrahim Al-Asymawi Guru Besar Hadist dan Ilmu Qiroat Al-Azhar Mesir"
+                         class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-500"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-8 text-white">
+                        <span class="bg-yellow-500 text-blue-900 px-3 py-1 rounded text-sm font-semibold mb-3 inline-block">TERBARU</span>
+                        <h1 class="text-4xl font-bold leading-tight mb-4">
+                            Kunjungan Syeikh Muhammad Ibrahim Al-Asymawi Guru Besar Hadist dan Ilmu Qiroat Al-Azhar Mesir
+                        </h1>
+                        <time class="text-sm opacity-90">5 Januari 2026</time>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- 3 Artikel Kecil di Samping -->
+        <div class="space-y-6">
+            <!-- Artikel 1: -->
+            <a href="https://www.instagram.com/p/DTEyVsskj5b/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" 
+               class="group flex gap-4 hover:bg-gray-100 p-4 -m-4 rounded-lg transition-colors duration-300">
+                <img src="img/kmd.png" alt="Pendaftaran Tahfidz 2026 Ma'had Al-Muqoddasah" class="w-32 h-32 object-cover rounded-lg">
+                <div>
+                    <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition-colors line-clamp-3">
+                        Santri Ma'had Al-Muqoddasah Ikuti Kursus Pembina Pramuka Mahir Tingkat Dasar (KMD)
+                    </h3>
+                    <time class="text-sm text-gray-500 mt-2 block">4 Januari 2026</time>
+                </div>
+            </a>
+
+            <!-- Artikel 2: -->
+            <a href="https://instabio.cc/almuqoddasah25" target="_blank" 
+               class="group flex gap-4 hover:bg-gray-100 p-4 -m-4 rounded-lg transition-colors duration-300">
+                <img src="img/ppsb.jpg" alt="Prestasi Santri Ma'had Al-Muqoddasah" class="w-32 h-32 object-cover rounded-lg">
+                <div>
+                    <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition-colors line-clamp-3">
+                        Pendaftaran Santri Baru Tahun Ajaran 2025-2026 Dibuka
+                    </h3>
+                    <time class="text-sm text-gray-500 mt-2 block">15 November 2025</time>
+                </div>
+            </a>
+
+            <!-- Artikel 3: -->
+            <a href="https://www.instagram.com/p/DSM_0I-ElCh/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" 
+               class="group flex gap-4 hover:bg-gray-100 p-4 -m-4 rounded-lg transition-colors duration-300">
+                <img src="img/ut.png" alt="Bina Iman Ma'had Al-Muqoddasah" class="w-32 h-32 object-cover rounded-lg">
+                <div>
+                    <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition-colors line-clamp-3">
+                        Ujian tahfizh yang diadakan setiap akhir semester
+                    </h3>
+                    <time class="text-sm text-gray-500 mt-2 block">13 Desember 2025</time>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="mt-10 text-center md:text-right">
+        <a href="tentang.html" class="hidden md:inline-block text-blue-900 font-semibold text-lg hover:underline">
+            Lihat Semua Berita →
+        </a>
+        <a href="tentang.html" class="md:hidden inline-block w-full text-center bg-blue-900 text-white py-4 rounded-lg font-semibold hover:bg-blue-800 transition text-lg">
+            Lihat Semua Berita
+        </a>
+    </div>
+</section>
+
+<!-- Section Berita Terbaru MQ - Ma'had Al-Muqoddasah -->
+<section id="berita-utama" class="container mx-auto px-4 py-12 border-t-2 border-gray-300">
+    <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl font-bold text-blue-900">Berita Terbaru</h2>
+        <a href="tentang.html" class="hidden md:block text-blue-900 font-semibold hover:underline">Lihat Semua →</a>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <!-- Card 1: Kursus Pramuka KMD (terbaru dari post IG) -->
+        <a href="https://www.instagram.com/p/DTEyVsskj5b/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="block group">
+            <img src="img/kmd.png" alt="Kursus Pembina Pramuka Mahir Dasar Ma'had Al-Muqoddasah" class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
+            <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
+                Santri Ikuti Kursus Pembina Pramuka Mahir Tingkat Dasar (KMD)
+            </h3>
+            <time class="text-sm text-gray-500 block mt-2">4 Januari 2026</time>
+        </a>
+
+        <!-- Card 2: Pendaftaran Santri Baru (kegiatan terkini) -->
+        <a href="https://instabio.cc/almuqoddasah25" target="_blank" class="block group">
+            <img src="img/ppsb.jpg" alt="Pendaftaran Santri Baru Ma'had Al-Muqoddasah 2025-2026" class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
+            <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
+                Pendaftaran Santri Baru Tahun Ajaran 2025-2026 Dibuka
+            </h3>
+            <time class="text-sm text-gray-500 block mt-2">15 November 2025</time>
+        </a>
+
+        <!-- Card 3: Ujian Tahfidz -->
+        <a href="https://www.instagram.com/p/DSM_0I-ElCh/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="block group">
+            <img src="img/ut.png" alt="Prestasi Santri Ma'had Al-Muqoddasah" class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
+            <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
+                Ujian tahfizh yang diadakan setiap akhir semester
+            </h3>
+            <time class="text-sm text-gray-500 block mt-2">13 Desember 2025</time>
+        </a>
+
+        <!-- Card 4: Ujian Tengah Semester -->
+        <a href="https://www.instagram.com/p/DR_O_FIkkuC/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="block group">
+            <img src="img/uts.jpg" alt="Bina Iman dan Taqwa Ma'had Al-Muqoddasah" class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
+            <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
+                Ujian Penilaian Akhir Semester Ganjil
+            </h3>
+            <time class="text-sm text-gray-500 block mt-2">2 Januari 2026</time>
+        </a>
+
+        <!-- Card 5: Perfotoan Halaqoh Ngaji -->
+        <a href="https://www.instagram.com/p/DRb-yFIkrdX/?utm_source=ig_web_copy_link" target="_blank" class="block group">
+            <img src="img/Halaqoh.jpg" alt="Wisuda Hafidh Ma'had Al-Muqoddasah" class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
+            <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
+                Perfotoan Halaqoh Ngaji
+            </h3>
+            <time class="text-sm text-gray-500 block mt-2">24 November 2025</time>
+        </a>
+
+        <!-- Card 6: Lentera -->
+        <a href="https://www.instagram.com/almuqoddasah_tv/" target="_blank" class="block group">
+            <img src="img/lentera.jpg" alt="Program Tahsin Dewasa Ma'had Al-Muqoddasah" class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
+            <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
+                The Greatest Panggung Lentera 32 Al-Muqoddasah
+            </h3>
+            <time class="text-sm text-gray-500 block mt-2">10 November 2025</time>
+        </a>
+
+        <!-- Card 7: TKA -->
+        <a href="https://www.instagram.com/p/DQmEJ9pEj14/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="block group">
+            <img src="img/TKA.jpg" alt="Refleksi Santri Ma'had Al-Muqoddasah" class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
+            <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
+                TKA(Tes Kemampuan Akademik) dikhususkan kepada Siswa Akhir kelas 12
+            </h3>
+            <time class="text-sm text-gray-500 block mt-2">30 Desember 2025</time>
+        </a>
+
+        <!-- Card 8: Pengajian Rutin -->
+        <a href="https://www.instagram.com/p/DQNjv1NElCJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="block group">
+            <img src="img/rekreasi.jpg" alt="Pengajian Rutin Ma'had Al-Muqoddasah" class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
+            <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
+                Rekreasi Tahunan Ma'had Al-Muqoddasah Li Tahfizhil Qu'an
+            </h3>
+            <time class="text-sm text-gray-500 block mt-2">25 Oktober 2025</time>
+        </a>
+    </div>
+
+    <div class="mt-10 text-center md:hidden">
+        <a href="tentang.html" class="inline-block w-full bg-blue-900 text-white py-4 px-8 rounded-lg font-semibold hover:bg-blue-800 transition text-lg">
+            Lihat Semua Berita
+        </a>
+    </div>
+</section>
+
+<!-- Kegiatan & Pengumuman Terbaru MQ - Ma'had Al-Muqoddasah -->
+<section id="pengumuman" class="bg-gray-100 py-12">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-10">
+            <h2 class="text-4xl font-bold text-blue-900 mb-3">Kegiatan & Pengumuman</h2>
+            <p class="text-gray-600 text-lg">Informasi terbaru seputar kegiatan, pengumuman, dan program di Ma'had Al-Muqoddasah Li Tahfizhil Qur'an</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+            <!-- Featured Pengumuman Utama: Kursus Pramuka KMD (terbaru dari IG) -->
+            <a href="https://www.instagram.com/p/DSd7hELEplu/?utm_source=ig_web_copy_link" target="_blank" 
+               class="block rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                <img src="img/m1.jpg" alt="Kursus Pembina Pramuka Mahir Tingkat Dasar (KMD) di Ma'had Al-Muqoddasah" class="w-full h-96 object-cover">
+                <div class="bg-gradient-to-t from-blue-900 to-transparent p-8 text-white">
+                    <span class="bg-yellow-500 text-blue-900 px-4 py-1 rounded text-sm font-bold inline-block mb-4">PENGUMUMAN</span>
+                    <h3 class="text-3xl font-bold leading-tight mb-4">
+                        MAKLUMAT PENGASUH MA'HAD AL-MUQODDASAH LI TAHFIZHIL QUR'AN
+                    </h3>
+                    <div class="flex items-center gap-4 text-sm opacity-90">
+                        <span>Sekretaris Pimpinan</span>
+                        <span>5 Januari 2026 • Kegiatan Santri</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- List Kegiatan/Pengumuman Kecil -->
+            <div class="space-y-6">
+                <!-- Item 1: Pendaftaran Santri Baru (masih relevan dari tahun sebelumnya, link bio pendaftaran) -->
+                <a href="https://instabio.cc/almuqoddasah25" target="_blank" 
+                   class="flex gap-4 items-start hover:bg-white p-4 -m-4 rounded-lg transition-colors duration-300">
+                    <img src="img/m2.jpg" alt="Pendaftaran Santri Baru Ma'had Al-Muqoddasah" class="w-32 h-32 object-cover rounded-lg">
+                    <div>
+                        <h4 class="font-bold text-lg leading-tight hover:text-yellow-500 transition-colors">
+                            Informasi Pendaftaran Santri Baru Tahun Ajaran Baru
+                        </h4>
+                        <p class="text-sm text-gray-600 mt-1">Panitia PSB • Update Januari 2026 • Pendaftaran Online</p>
+                    </div>
+                </a>
+
+                <!-- Item 2: Jadwal Wisuda atau Sosialisasi Hafalan -->
+                <a href="https://www.instagram.com/almuqoddasah_tv/" target="_blank" 
+                   class="flex gap-4 items-start hover:bg-white p-4 -m-4 rounded-lg transition-colors duration-300">
+                    <img src="img/m3.jpg" alt="Wisuda Tahfidz Ma'had Al-Muqoddasah" class="w-32 h-32 object-cover rounded-lg">
+                    <div>
+                        <h4 class="font-bold text-lg leading-tight hover:text-yellow-500 transition-colors">
+                            JADWAL PENJENGUKAN
+                        </h4>
+                        <p class="text-sm text-gray-600 mt-1">Pengasuhan Santri • 3 Januari 2026 • Acara Resmi</p>
+                    </div>
+                </a>
+
+        
+            </div>
+        </div>
+
+        <div class="text-center mt-10">
+            <a href="tentang.html" class="border border-blue-900 text-blue-900 font-bold py-4 px-10 rounded-lg inline-block hover:bg-blue-50 transition text-lg">
+                Lihat Semua Pengumuman
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Kabar Santri & Pesantren MQ -->
+<section id="kabar-santri" class="bg-blue-900 text-white py-12">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-4xl font-bold text-yellow-400">Kabar Santri</h2>
+            <a href="tentang.html" class="hidden md:block hover:underline text-yellow-400 font-semibold">Lihat Semua →</a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Featured Kabar Santri -->
+            <div class="md:col-span-1">
+                <a href="https://www.instagram.com/p/DQCAXn3Ej2c/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="block group">
+                    <img src="img/haflah1.jpg" alt="Wisuda Hafiz Quran Ponpes MQ" class="w-full rounded-lg mb-4 group-hover:opacity-90 transition">
+                    <h3 class="text-2xl font-bold leading-tight group-hover:text-yellow-400 transition">
+                        Wisuda Akbar Haflah Khotmil Qur'an Angkatan Ke-22
+                    </h3>
+                    <time class="block mt-3 text-sm opacity-80">4 Januari 2026</time>
+                </a>
+            </div>
+
+            <!-- List Kabar Kecil -->
+            <div class="md:col-span-2 space-y-8">
+                <!-- Item 1 -->
+                <a href="https://www.instagram.com/p/DQAy7Akkk9L/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="flex gap-6 items-start hover:opacity-90 transition group">
+                    <img src="img/milad.jpg" alt="Santri Berprestasi MHQ" class="w-36 h-36 object-cover rounded-lg group-hover:opacity-90 transition">
+                    <div>
+                        <h4 class="text-xl font-bold group-hover:text-yellow-400 transition">
+                            Ma'had Al-Muqoddasah Li Tahfizhil Quran mengadakan rentetan acara dalam memperingati Milad yang ke-33 tahun
+                        </h4>
+                        <time class="text-sm opacity-80 mt-2 block">3 Januari 2026</time>
+                    </div>
+                </a>
+
+                <!-- Item 2 -->
+                <a href="https://www.instagram.com/p/DOQ5WW2kvin/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="flex gap-6 items-start hover:opacity-90 transition group">
+                    <img src="img/maulid nabi.jpg" alt="Kegiatan Malam Bina Iman" class="w-36 h-36 object-cover rounded-lg group-hover:opacity-90 transition">
+                    <div>
+                        <h4 class="text-xl font-bold group-hover:text-yellow-400 transition">
+                            Ma'had Al-Muqoddasah Li Tahfizhil Qur'an memperingati Maulid Nabi Muhammad SAW
+                        </h4>
+                        <time class="text-sm opacity-80 mt-2 block">1 Januari 2026</time>
+                    </div>
+                </a>
+
+                <!-- Item 3 -->
+                <a href="https://www.instagram.com/p/DOOg8DzEkSN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="flex gap-6 items-start hover:opacity-90 transition group">
+                    <img src="img/manasik.jpg" alt="Santri Baru MQ" class="w-36 h-36 object-cover rounded-lg group-hover:opacity-90 transition">
+                    <div>
+                        <h4 class="text-xl font-bold group-hover:text-yellow-400 transition">
+                            SD Al-Muqoddasah dari santri/ah kelas 5 dan 6 ikut serta dalam kegiatan manasik haji yang diselenggarakan oleh petugas pembimbing kecamatan Mlarak
+                        </h4>
+                        <time class="text-sm opacity-80 mt-2 block">31 Desember 2025</time>
+                    </div>
+                </a>
+
+                <!-- Item 4 (opsional, tambah kalau mau) -->
+                <a href="https://www.instagram.com/p/DNlFfSZSN8-/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="flex gap-6 items-start hover:opacity-90 transition group">
+                    <img src="img/khotimin.jpg" alt="Kegiatan Olahraga Santri" class="w-36 h-36 object-cover rounded-lg group-hover:opacity-90 transition">
+                    <div>
+                        <h4 class="text-xl font-bold group-hover:text-yellow-400 transition">
+                            Ujian Khotmil Qur'an Gelombang Ke-3 dengan khidmat dan penuh kesakralan
+                        </h4>
+                        <time class="text-sm opacity-80 mt-2 block">20 Agustus 2025</time>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Kajian & Artikel -->
+<section id="kajian" class="container mx-auto px-4 py-12 border-t-2 border-gray-300">
+    <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl font-bold text-blue-900">Kajian & Artikel</h2>
+        <a href="tentang.html" class="text-blue-900 font-semibold hover:underline">Lihat Semua →</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Featured Kajian Kiri (dengan foto besar) -->
+        <div class="md:col-span-1">
+            <a href="https://www.instagram.com/p/CqFL2EFrE0A/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="block group">
+                <img src="img/Inpirasi Ust Hasan 1.jpg" 
+                     alt="Ustadz/Ustadzah Ponpes MQ" 
+                     class="w-full h-96 object-cover rounded-lg mb-6 group-hover:opacity-90 transition">
+                <h3 class="text-2xl font-bold leading-tight group-hover:text-yellow-500 transition">
+                    Meningkatkan kualitas ibadah oleh K.H. Hasan Abdullah Sahal
+                </h3>
+                <time class="text-sm text-gray-500 block mt-4">22 Maret 2023 • K.H. Hasan Abdullah Sahal</time>
+            </a>
+        </div>
+
+        <!-- List Kajian Kanan -->
+        <div class="md:col-span-2 space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <a href="https://www.instagram.com/p/CqPY7Iurmse/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group flex gap-4 items-start hover:bg-gray-50 p-4 -m-4 rounded-lg transition-colors duration-300">
+                  <img src="img/ust yusron.jpg" alt="Ustadz Zidanizdan Yahya Fillahi" class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
+                  <div>
+                      <h4 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
+                          Menerapkan isi Al - Qur'an dalam kehidupan oleh Al-Ustadz H. Saidil Yusron, S.Th.I., Lc., M.A.
+                      </h4>
+                      <time class="text-sm text-gray-500 block mt-2">23 Maret 2025 • Al-Ustadz H. Saidil Yusron, S.Th.I., Lc., M.A.</time>
+                  </div>
+               </a>
+
+                <a href="https://www.instagram.com/p/Cq-Ir_mLxKV/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group flex gap-4 items-start hover:bg-gray-50 p-4 -m-4 rounded-lg transition-colors duration-300">
+                  <img src="img/ust hanif.jpg" alt="Ustadz Zidanizdan Yahya Fillahi" class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
+                  <div>
+                      <h4 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
+                          Membentuk pribadi istiqomah dalma kebaikan oleh Al-Ustadz Hanif Indra Kusuma, S.Ag
+                      </h4>
+                      <time class="text-sm text-gray-500 block mt-2">13 April 2023 • Al-Ustadz Hanif Indra Kusuma, S.Ag</time>
+                  </div>
+               </a>
+
+               <a href="https://www.instagram.com/p/Cq2W6_9L8ua/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group flex gap-4 items-start hover:bg-gray-50 p-4 -m-4 rounded-lg transition-colors duration-300">
+                  <img src="img/ust fatur.jpg" alt="Ustadz Zidanizdan Yahya Fillahi" class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
+                  <div>
+                      <h4 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
+                          Ramadhan sebagai momentum untuk membangun kedisiplinan oleh Al-Ustadz H. Fathurachman Dzufadli, M.Si
+                      </h4>
+                      <time class="text-sm text-gray-500 block mt-2">10 April 2023 • Al-Ustadz H. Fathurachman Dzufadli, M.Si</time>
+                  </div>
+               </a>
+
+                <a href="https://www.instagram.com/p/Cq2W6_9L8ua/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group flex gap-4 items-start hover:bg-gray-50 p-4 -m-4 rounded-lg transition-colors duration-300">
+                  <img src="img/ust ryan.jpg" alt="Ustadz Zidanizdan Yahya Fillahi" class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
+                  <div>
+                      <h4 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
+                          Menjalankan ibadah puasa dengan sungguh-sungguh berarti menjaga lisan, hati, dan perbuatan agar Ramadhan meningkatkan ketakwaan kepada Allah
+                      </h4>
+                      <time class="text-sm text-gray-500 block mt-2">2 Maret 2025 • Al-Ustadz Yan Isa Al-Ghani, M.Pd.</time>
+                  </div>
+               </a>
+
+               <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" target="_blank" class="group flex gap-4 items-start hover:bg-gray-50 p-4 -m-4 rounded-lg transition-colors duration-300">
+                  <img src="img/ust zidan.jpg" alt="Ustadz Zidanizdan Yahya Fillahi" class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
+                  <div>
+                      <h4 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
+                          Penjelasan tentang "Etiquette" oleh Al-Ustadz Zidanizdan Yahya Fillahi
+                      </h4>
+                      <time class="text-sm text-gray-500 block mt-2">3 Januari 2026 • Al-Ustadz Zidanizdan Yahya Fillahi</time>
+                  </div>
+               </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Galeri Foto MQ -->
+<section id="galeri" class="container mx-auto px-4 py-12 border-t-2 border-gray-300">
+    <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl font-bold text-blue-900">Galeri Foto</h2>
+        <a href="tentang.html" class="text-blue-900 font-semibold hover:underline">Lihat Semua →</a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Foto 1 -->
+        <a href="https://www.instagram.com/p/DMW81P6ywZQ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group block overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <img src="img/apel ta'aruf.jpg" 
+                 alt="Wisuda Tahfidz 30 Juz Ponpes MQ Tebuireng 2026" 
+                 class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="p-4 bg-white">
+                <h3 class="text-xl font-bold leading-tight group-hover:text-yellow-500 transition">
+                    Apel Ta'aruf "MENJAGA AL-QURAN DI SANUBARI DEMI MERAIH KEBAHAGIAAN YANG HAQIQI"
+                </h3>
+                <time class="text-sm text-gray-500 block mt-2">21 Juli 2025</time>
+            </div>
+        </a>
+
+        <!-- Foto 2 -->
+        <a href="https://www.instagram.com/p/DL-X02nyGA3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group block overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <img src="img/tahun ajaran baru.jpg" 
+                 alt="Pelepasan Santri Hafiz Quran Ponpes MQ" 
+                 class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="p-4 bg-white">
+                <h3 class="text-xl font-bold leading-tight group-hover:text-yellow-500 transition">
+                    Pembukaan Tahun Ajaran Baru 2025
+                </h3>
+                <time class="text-sm text-gray-500 block mt-2">11 Juli 2025</time>
+            </div>
+        </a>
+
+        <!-- Foto 3 -->
+        <a href="https://www.instagram.com/p/DMPG8EtSZUa/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group block overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <img src="img/mpls.jpg" 
+                 alt="Masa Pengenalan Lingkungan Sekolah (MPLS)" 
+                 class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="p-4 bg-white">
+                <h3 class="text-xl font-bold leading-tight group-hover:text-yellow-500 transition">
+                    Masa Pengenalan Lingkungan Sekolah (MPLS) 2025
+                </h3>
+                <time class="text-sm text-gray-500 block mt-2">18 Juli 2025</time>
+            </div>
+        </a>
+
+        <!-- Foto 4 -->
+        <a href="https://www.instagram.com/p/DL1Cr62yYvn/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group block overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <img src="img/expo.jpg" 
+                 alt="Expo Muharram Santri dibuka oleh Al-Ustadz H. Saidil Yusron, Lc., M.A" 
+                 class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="p-4 bg-white">
+                <h3 class="text-xl font-bold leading-tight group-hover:text-yellow-500 transition">
+                    Expo Muharram Santri dibuka oleh Al-Ustadz H. Saidil Yusron, Lc., M.A
+                </h3>
+                <time class="text-sm text-gray-500 block mt-2">8 Juli 2025</time>
+            </div>
+        </a>
+
+        <!-- Foto 5 -->
+        <a href="https://www.instagram.com/p/DLggDclSDWH/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group block overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <img src="img/HBI.jpg" 
+                 alt="Pengajian Rutin Bulanan Ponpes MQ" 
+                 class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="p-4 bg-white">
+                <h3 class="text-xl font-bold leading-tight group-hover:text-yellow-500 transition">
+                    Dalam rangka memperingati Tahun Baru 1447 H Ma'had Al-Muqoddasah Li Tahfizhil Qur'an melaksanakan khataman Al-Qur'an 30 juz dan sholawatan akbar
+                </h3>
+                <time class="text-sm text-gray-500 block mt-2">30 Juni 2025</time>
+            </div>
+        </a>
+
+        <!-- Foto 6 -->
+        <a href="https://www.instagram.com/p/DO81vF5Et-K/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group block overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <img src="img/kemah.jpg" 
+                 alt="Kedatangan Santri Baru Ponpes MQ" 
+                 class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="p-4 bg-white">
+                <h3 class="text-xl font-bold leading-tight group-hover:text-yellow-500 transition">
+                    Buper perkemahan Cibubur dalam acara World Muslim Scout Jamboree (WMSJ) 2025
+                </h3>
+                <time class="text-sm text-gray-500 block mt-2">23 September 2025</time>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- Section Inspirasi MQ -->
+<section id="inspirasi" class="container mx-auto px-4 py-12 border-t-2 border-gray-300">
+    <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl font-bold text-blue-900">Inspirasi</h2>
+        <a href="tentang.html" class="text-blue-900 font-semibold hover:underline">Lihat Semua →</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Featured Inspirasi Kiri (besar) -->
+        <div class="md:col-span-1">
+            <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" target="_blank" class="group block">
+                <img src="foto.jpg" 
+                     alt="Kisah Santri MQ Hafal 30 Juz dalam 2 Tahun" 
+                     class="w-full h-full object-cover rounded-lg mb-4 group-hover:opacity-90 transition">
+                <h3 class="text-2xl font-bold leading-tight group-hover:text-yellow-500 transition mt-4">
+                    Dari Nol hingga Hafiz: Perjuangan Santri MQ Menghafal 30 Juz dalam 2 Tahun
+                </h3>
+                <time class="text-sm text-gray-500 block mt-4">4 Januari 2026</time>
+            </a>
+        </div>
+
+        <!-- List Inspirasi Kanan -->
+        <div class="md:col-span-2 space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" target="_blank" class="group flex items-start gap-4 hover:bg-gray-50 p-2 -m-2 rounded-lg transition">
+                    <img src="foto.jpg" alt="Santri MQ Juara Internasional" class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
+                    <div>
+                        <h4 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
+                            Alumni 2023 sudah berada di tanah yaman untuk melanjutkan study
+                        </h4>
+                        <time class="text-sm text-gray-500 block mt-2">3 Januari 2026</time>
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" target="_blank" class="group flex items-start gap-4 hover:bg-gray-50 p-2 -m-2 rounded-lg transition">
+                    <img src="foto.jpg" alt="Ustadz Pengayah MQ" class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
+                    <div>
+                        <h4 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
+                            Santri MQ umur 8 tahun sudah hafal 10 juz
+                        </h4>
+                        <time class="text-sm text-gray-500 block mt-2">2 Januari 2026</time>
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" target="_blank" class="group flex items-start gap-4 hover:bg-gray-50 p-2 -m-2 rounded-lg transition">
+                    <img src="foto.jpg" alt="Santri MQ Lulusan Terbaik" class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
+                    <div>
+                        <h4 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
+                            Lulusan MQ Diterima Universitas Al-Azhar: Kisah Dedikasi dan Doa
+                        </h4>
+                        <time class="text-sm text-gray-500 block mt-2">1 Januari 2026</time>
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" target="_blank" class="group flex items-start gap-4 hover:bg-gray-50 p-2 -m-2 rounded-lg transition">
+                    <img src="foto.jpg" alt="Kegiatan Sosial Santri MQ" class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
+                    <div>
+                        <h4 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
+                            Alumni gelar kebersamaan bersama sekitar dengan berbuka bersama disambi tausiah
+                        </h4>
+                        <time class="text-sm text-gray-500 block mt-2">31 Desember 2025</time>
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" target="_blank" class="group block col-span-2 hover:bg-gray-50 p-2 -m-2 rounded-lg transition">
+                    <h4 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition">
+                        Motivasi dari Para Hafiz: Bagaimana Al-Qur'an Mengubah Hidup Saya
+                    </h4>
+                    <time class="text-sm text-gray-500 block mt-2">30 Desember 2025</time>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Profil Pengasuh & Tokoh MQ -->
+<section class="container mx-auto px-4 py-12 border-t-2 border-gray-300">
+    <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl font-bold text-blue-900">Profil Pengasuh & Tokoh</h2>
+        <a href="tentang.html" class="text-blue-900 font-semibold hover:underline">Lihat Semua →</a>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <!-- Profil 1 -->
+        <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" target="_blank" class="group block overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+            <img src="img/KH. Hasan Abdullah Sahal.jpeg" alt="KH. Anwar Iskandar" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="p-4 bg-white">
+                <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-2">
+                    KH. Hasan Abdullah Sahal
+                </h3>
+                <time class="text-sm text-gray-500 block mt-2">Diperbarui 4 Januari 2026</time>
+            </div>
+        </a>
+
+        <!-- Profil 2 -->
+        <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" target="_blank" class="group block overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+            <img src="foto.jpg" alt="KH. Yusuf Mansur" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="p-4 bg-white">
+                <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-2">
+                    K.H. Heikal Yanuarshah Ibadillah, S.E., M.Si.
+                </h3>
+                <time class="text-sm text-gray-500 block mt-2">Diperbarui 3 Januari 2026</time>
+            </div>
+        </a>
+
+    </div>
+</section>
+
+<!-- Section Isu Hangat MQ -->
+<section class="container mx-auto px-4 py-12 border-t-2 border-gray-300">
+    <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl font-bold text-blue-900">Isu Hangat</h2>
+        <a href="tentang.html" class="text-blue-900 font-semibold hover:underline">Lihat Semua →</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Featured Isu Hangat Besar Kiri -->
+        <div>
+            <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" target="_blank" class="group block">
+                <img src="foto.jpg" 
+                     alt="Tantangan Tahfidz di Era Digital Ponpes MQ" 
+                     class="w-full h-96 object-cover rounded-lg mb-6 group-hover:opacity-90 transition">
+                <h3 class="text-2xl font-bold leading-tight group-hover:text-yellow-500 transition">
+                    Tantangan Menghafal Al-Qur'an di Era Digital: Pengalaman Santri Ponpes MQ
+                </h3>
+                <p class="text-gray-700 mt-3 line-clamp-3">
+                    Di tengah maraknya gadget dan media sosial, bagaimana santri Ponpes MQ tetap fokus menghafal 30 juz? Kami bahas strategi, tantangan, dan solusi dari para hafiz muda MQ Tebuireng...
+                </p>
+                <time class="text-sm text-gray-500 block mt-4">4 Januari 2026</time>
+            </a>
+        </div>
+
+        <!-- List Isu Hangat Kanan -->
+        <div class="md:col-span-2 space-y-8">
+            <a href="https://www.instagram.com/p/CqPY7Iurmse/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group flex gap-6 items-start hover:bg-gray-50 p-2 -m-2 rounded-lg transition">
+                <img src="foto.jpg" alt="Isu Pendidikan Tahfidz" class="w-48 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
+                <div>
+                    <h4 class="font-bold text-xl group-hover:text-yellow-500 transition">
+                        Menerapkan isi Al - Qur'an dalam kehidupan 
+                    </h4>
+                    <time class="text-sm text-gray-500 block mt-2">26 Maret 2023</time>
+                </div>
+            </a>
+
+            <a href="https://www.instagram.com/p/Cq-Ir_mLxKV/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group flex gap-6 items-start hover:bg-gray-50 p-2 -m-2 rounded-lg transition">
+                <img src="foto.jpg" alt="Isu Kesejahteraan Santri" class="w-48 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
+                <div>
+                    <h4 class="font-bold text-xl group-hover:text-yellow-500 transition">
+                        Membentuk pribadi istiqomah dalam kebaikan
+                    </h4>
+                    <time class="text-sm text-gray-500 block mt-2">13 April 2023</time>
+                </div>
+            </a>
+
+            <a href="https://www.instagram.com/p/Cq2W6_9L8ua/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group flex gap-6 items-start hover:bg-gray-50 p-2 -m-2 rounded-lg transition">
+                <img src="foto.jpg" alt="Isu Peran Orang Tua" class="w-48 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
+                <div>
+                    <h4 class="font-bold text-xl group-hover:text-yellow-500 transition">
+                        Ramadhan sebagai momentum untuk membangun kedisiplinan 
+                    </h4>
+                    <time class="text-sm text-gray-500 block mt-2">10 April 2023</time>
+                </div>
+            </a>
+
+            <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" target="_blank" class="group flex gap-6 items-start hover:bg-gray-50 p-2 -m-2 rounded-lg transition">
+                <img src="foto.jpg" alt="Isu Integrasi Teknologi" class="w-48 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
+                <div>
+                    <h4 class="font-bold text-xl group-hover:text-yellow-500 transition">
+                        Integrasi Teknologi dalam Pembelajaran Tahfidz: Peluang atau Ancaman?
+                    </h4>
+                    <time class="text-sm text-gray-500 block mt-2">31 Desember 2025</time>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Section Pojok INI -->
+<section class="container mx-auto px-4 py-12 border-t-2 border-gray-300">
+    <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl font-bold">Pojok INI</h2>
+        <a href="/pojok-ini/" class="text-blue-900 font-semibold hover:underline">Lihat Semua →</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Featured Kiri -->
+        <div>
+            <a href="#" class="group block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+                <img src="foto.jpg" 
+                     alt="Menata Warisan, Menerangi Masa Depan" 
+                     class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="bg-gradient-to-t from-blue-900 to-transparent p-6">
+                    <h3 class="text-2xl font-bold text-white leading-tight">
+                        Menata Warisan, Menerangi Masa Depan
+                    </h3>
+                </div>
+            </a>
+        </div>
+
+        <!-- List Kanan -->
+        <div class="md:col-span-2 space-y-6">
+            <a href="#" class="group block border-b border-gray-200 pb-6 last:border-0">
+                <h4 class="text-xl font-bold leading-tight group-hover:text-yellow-500 transition">
+                    PP INI Serahkan Hewan Kurban, Senyuman Kebahagiaan Terpancar dari Penerima
+                </h4>
+            </a>
+
+            <a href="#" class="group block border-b border-gray-200 pb-6 last:border-0">
+                <h4 class="text-xl font-bold leading-tight group-hover:text-yellow-500 transition">
+                    Merajut Ukhuah, PP INI Ajak Notaris Jaga Persatuan dalam Momen Halalbihalal
+                </h4>
+            </a>
+
+            <a href="#" class="group block">
+                <h4 class="text-xl font-bold leading-tight group-hover:text-yellow-500 transition">
+                    PP INI Menebar Kebaikan, Santunan, dan Kebersamaan di Bulan Suci
+                </h4>
+            </a>
+        </div>
+    </div>
+</section><!-- Section Pojok MQ -->
+<section class="container mx-auto px-4 py-12 border-t-2 border-gray-300">
+    <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl font-bold text-blue-900">Pojok MQ</h2>
+        <a href="tentang.html" class="text-blue-900 font-semibold hover:underline">Lihat Semua →</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Featured Kiri (besar) -->
+        <div>
+            <a href="#" class="group block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <img src="foto.jpg" 
+                     alt="Santri MQ Menebar Kebaikan di Bulan Ramadhan" 
+                     class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="bg-gradient-to-t from-blue-900 to-transparent p-6">
+                    <h3 class="text-2xl font-bold text-white leading-tight">
+                        Menebar Kebaikan: Santri MQ Bagikan Santunan dan Paket Ramadhan kepada Warga Sekitar
+                    </h3>
+                </div>
+            </a>
+        </div>
+
+        <!-- List Kanan -->
+        <div class="md:col-span-2 space-y-6">
+            <a href="#" class="group block border-b border-gray-200 pb-6 last:border-0 hover:bg-gray-50 p-4 -m-4 rounded-lg transition">
+                <h4 class="text-xl font-bold leading-tight group-hover:text-yellow-500 transition">
+                    Halalbihalal Akbar Ponpes MQ: Merajut Silaturahmi Santri, Alumni, dan Masyarakat
+                </h4>
+                <time class="text-sm text-gray-500 block mt-2">3 Januari 2026</time>
+            </a>
+
+            <a href="#" class="group block border-b border-gray-200 pb-6 last:border-0 hover:bg-gray-50 p-4 -m-4 rounded-lg transition">
+                <h4 class="text-xl font-bold leading-tight group-hover:text-yellow-500 transition">
+                    Santri MQ Gelar Bazar Amal: Hasil Penjualan untuk Korban Bencana Alam
+                </h4>
+                <time class="text-sm text-gray-500 block mt-2">2 Januari 2026</time>
+            </a>
+
+            <a href="#" class="group block hover:bg-gray-50 p-4 -m-4 rounded-lg transition">
+                <h4 class="text-xl font-bold leading-tight group-hover:text-yellow-500 transition">
+                    Kunjungan dan Doa Bersama: Ponpes MQ Sambut Tokoh Nasional di Awal Tahun
+                </h4>
+                <time class="text-sm text-gray-500 block mt-2">1 Januari 2026</time>
+            </a>
+
+            <!-- Tambahan kalau mau lebih panjang -->
+            <a href="#" class="group block hover:bg-gray-50 p-4 -m-4 rounded-lg transition">
+                <h4 class="text-xl font-bold leading-tight group-hover:text-yellow-500 transition">
+                    Program Sedekah Jumat: Santri MQ Rutin Berbagi Nasi Kotak kepada Fakir Miskin
+                </h4>
+                <time class="text-sm text-gray-500 block mt-2">31 Desember 2025</time>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Section Pojok Alumni MQ -->
+<section class="container mx-auto px-4 py-12 border-t-2 border-gray-300">
+    <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl font-bold text-blue-900">Pojok Alumni</h2>
+        <a href="tentang.html" class="text-blue-900 font-semibold hover:underline">Lihat Semua →</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Featured Kiri (foto besar tanpa teks overlay) -->
+        <div>
+            <a href="#" class="group block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <img src="foto.jpg" 
+                     alt="Reuni Akbar Alumni Ponpes MQ Angkatan 2000-2010" 
+                     class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="p-6 bg-gradient-to-t from-blue-900 to-transparent">
+                    <h3 class="text-2xl font-bold text-white leading-tight">
+                        Reuni Akbar Alumni MQ: Kembali Mengukir Kenangan dan Silaturahmi
+                    </h3>
+                    <time class="text-sm text-white opacity-90 block mt-3">4 Januari 2026</time>
+                </div>
+            </a>
+        </div>
+
+        <!-- List Kanan -->
+        <div class="md:col-span-2 space-y-6">
+            <a href="#" class="group block border-b border-gray-200 pb-6 last:border-0 hover:bg-gray-50 p-4 -m-4 rounded-lg transition">
+                <h4 class="text-xl font-bold leading-tight group-hover:text-yellow-500 transition">
+                    Kisah Sukses Alumni MQ: Kini Menjadi Pengusaha
+                </h4>
+                <time class="text-sm text-gray-500 block mt-2">3 Januari 2026</time>
+            </a>
+
+            <a href="#" class="group block border-b border-gray-200 pb-6 last:border-0 hover:bg-gray-50 p-4 -m-4 rounded-lg transition">
+                <h4 class="text-xl font-bold leading-tight group-hover:text-yellow-500 transition">
+                    Alumni MQ Kembali ke Pesantren: Berbagi Ilmu dan Motivasi kepada Santri Junior
+                </h4>
+                <time class="text-sm text-gray-500 block mt-2">2 Januari 2026</time>
+            </a>
+
+            <a href="#" class="group block hover:bg-gray-50 p-4 -m-4 rounded-lg transition">
+                <h4 class="text-xl font-bold leading-tight group-hover:text-yellow-500 transition">
+                    Alumni MQ: Dulu santri sekarang jadi kyai 
+                </h4>
+                <time class="text-sm text-gray-500 block mt-2">1 Januari 2026</time>
+            </a>
+
+            <!-- Tambahan -->
+            <a href="#" class="group block hover:bg-gray-50 p-4 -m-4 rounded-lg transition">
+                <h4 class="text-xl font-bold leading-tight group-hover:text-yellow-500 transition">
+                    Refleksi 20 Tahun Lulus: Al-Qur'an Tetap Menjadi Pegangan Hidup Alumni MQ
+                </h4>
+                <time class="text-sm text-gray-500 block mt-2">31 Desember 2025</time>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Banner Pendaftaran Santri/AH Baru (Full Width, Versi Terbaru) -->
+<section class="py-16 bg-gradient-to-b from-blue-200 to-blue-300">
+    <div class="container mx-auto px-4">
+        <div class="relative max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl">
+            
+
+            <a href="https://instabio.cc/almuqoddasah25" class="flex items-center space-x-3">
+            <img src="foto.jpg" 
+                 alt="Ma'had Al-Muqoddasah" 
+                 class="w-full h-full object-cover absolute inset-0">
+            </a>
+
+            <div class="relative bg-gradient-to-b from-transparent via-transparent to-blue-900/70 flex flex-col items-center justify-center py-32 px-8 text-center text-white">
+                
+                <!-- Logo -->
+                <a href="https://instabio.cc/almuqoddasah25" class="flex items-center space-x-3">
+                <img src="logo.png" 
+                     alt="Logo Ma'had Al-Muqoddasah" 
+                     class="w-48 h-auto mb-12 drop-shadow-2xl">
+                </a>
+
+                <h1 class="text-6xl md:text-8xl font-extrabold uppercase leading-tight drop-shadow-2xl">
+                    Informasi<br>
+                    PENDAFTARAN<br>
+                    SANTRI/AH BARU
+                </h1>
+
+                <p class="text-3xl md:text-4xl font-bold mt-8 mb-16 drop-shadow-lg">
+                    Tahun Ajaran 2025/2026
+                </p>
+
+                <p class="text-xl md:text-2xl font-semibold leading-relaxed drop-shadow-lg">
+                    Ma'had <span class="font-extrabold text-3xl">AL-MUQODDASAh</span> Li Tahfizhli Qur'an<br>
+                    Nglumpang - Mlarak - Ponorogo - Jawa Timur
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Berita MQ - Ma'had Al-Muqoddasah -->
+<footer class="bg-blue-900 text-white py-12">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <!-- Logo & Deskripsi -->
+            <div class="md:col-span-1">
+                <div class="flex items-center mb-6">
+                    <img src="logo.png" alt="Berita MQ Logo" class="h-16 w-auto">
+                    <div class="ml-4 leading-tight">
+                        <h3 class="text-2xl font-bold">Berita<br><span class="text-yellow-400">MQ</span></h3>
+                    </div>
+                </div>
+
+                <p class="text-sm leading-relaxed">
+                    Ma'had Al-Muqoddasah Li Tahfizhil Qur'an<br>
+                    Pondok Pesantren Tahfidz Al-Qur'an<br>
+                    Nglumpang II, Nglumpang, Kec. Mlarak<br>
+                    Kabupaten Ponorogo, Provinsi Jawa Timur 63472<br><br>
+                    Telepon: 0877-6166-2521<br>
+                    WhatsApp: 0877-6166-2521<br>
+                    Email: info@almugoddasah.com<br>
+                    redaksi@berita-mq.com
+                </p>
+
+                <div class="flex space-x-4 mt-8">
+                    <a href="#" class="text-white hover:text-yellow-400 transition"><i class="fab fa-facebook-f text-xl"></i></a>
+                    <a href="#" class="text-white hover:text-yellow-400 transition"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="#" class="text-white hover:text-yellow-400 transition"><i class="fab fa-youtube text-xl"></i></a>
+                    <a href="#" class="text-white hover:text-yellow-400 transition"><i class="fab fa-twitter text-xl"></i></a>
+                    <a href="#" class="text-white hover:text-yellow-400 transition"><i class="fab fa-tiktok text-xl"></i></a>
+                    <a href="#" class="text-white hover:text-yellow-400 transition"><i class="fab fa-whatsapp text-xl"></i></a>
+                </div>
+            </div>
+
+            <!-- Menu Navigasi -->
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-yellow-400">Navigasi</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="ketiga.html" class="hover:text-yellow-400 transition">Home</a></li>
+                    <li><a href="#berita-utama" class="hover:text-yellow-400 transition">Berita Terbaru</a></li>
+                    <li><a href="#pengumuman" class="hover:text-yellow-400 transition">Pengumuman</a></li>
+                    <li><a href="#kabar-santri" class="hover:text-yellow-400 transition">Kabar Santri</a></li>
+                    <li><a href="#kajian" class="hover:text-yellow-400 transition">Kajian & Artikel</a></li>
+                    <li><a href="#galeri" class="hover:text-yellow-400 transition">Galeri Foto</a></li>
+                </ul>
+            </div>
+
+            <!-- Menu Lainnya -->
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-yellow-400">Lainnya</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#Inspirasi" class="hover:text-yellow-400 transition">Inspirasi</a></li>
+                    <li><a href="#Isu Hangat" class="hover:text-yellow-400 transition">Isu Hangat</a></li>
+                    <li><a href="#Pojok MQ" class="hover:text-yellow-400 transition">Pojok MQ</a></li>
+                    <li><a href="#Pojok Alumni" class="hover:text-yellow-400 transition">Pojok Alumni</a></li>
+                    <li><a href="#Profil Pengasuh" class="hover:text-yellow-400 transition">Profil Pengasuh</a></li>
+                    <li><a href="#Tentang Kami" class="hover:text-yellow-400 transition">Tentang Kami</a></li>
+                </ul>
+            </div>
+
+            <!-- Program & Kontak -->
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-yellow-400">Program Unggulan</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-yellow-400 transition">Tahfidz 30 Juz</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition">Tahsin & Tahfidz Dewasa</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition">Pendidikan Santri Putra/Putri</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition">Wisuda Hafiz & Binnadhar</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition">Beasiswa Santri Berprestasi</a></li>
+                </ul>
+
+                <h4 class="font-bold text-lg mt-8 mb-4 text-yellow-400">Kontak</h4>
+                <p class="text-sm">Hubungi kami untuk pendaftaran, kerjasama, atau informasi lainnya.</p>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-center mt-12 text-sm border-t border-blue-800 pt-8">
+            <p>© 2026 Berita MQ - Ma'had Al-Muqoddasah Li Tahfizhil Qur'an. Semua hak cipta dilindungi.</p>
+            <p class="mt-2">Dikelola dengan ikhlas untuk generasi penghafal Al-Qur'an</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
