@@ -1,12 +1,17 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ma'had Al-Muqoddasah Li Tahfizhil  Qur'an</title>
+    <title>Ma'had Al-Muqoddasah Li Tahfizhil Qur'an</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
         .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
@@ -15,11 +20,13 @@
 </head>
 <body class="bg-gray-50 font-sans leading-relaxed text-gray-800 antialiased">
 
-<header class="bg-white shadow-md sticky top-0 z-50">
+<!-- Header dengan Animasi AOS -->
+<header class="bg-white shadow-md sticky top-0 z-50" data-aos="fade-down" data-aos-duration="800">
     <div class="container mx-auto px-4">
         <div class="flex items-center justify-between h-20">
-            <!-- Logo & Teks -->
-            <a href="tentang.html" class="flex items-center space-x-3">
+            <!-- Logo & Teks dengan animasi fade-left -->
+            <a href="tentang.html" class="flex items-center space-x-3" 
+               data-aos="fade-right" data-aos-duration="1000">
                 <img src="logo.png" alt="Ma'had Al-Muqoddasah Logo" class="h-12 w-auto">
                 <div class="leading-tight">
                     <span class="text-xl font-bold text-blue-900">Ma'had</span><br>
@@ -28,34 +35,53 @@
                 </div>
             </a>
 
-            <!-- Menu Desktop -->
+            <!-- Menu Desktop dengan animasi staggered -->
             <nav class="hidden md:flex items-center space-x-6 lg:space-x-8">
-                <a href="index.html" class="text-gray-700 hover:text-yellow-500 font-medium transition">Home</a>
-                <a href="#berita-utama" class="text-gray-700 hover:text-yellow-500 font-medium transition">Berita</a>
-                <a href="#pengumuman" class="text-gray-700 hover:text-yellow-500 font-medium transition">Pengumuman</a>
-                <a href="#kabar-santri" class="text-gray-700 hover:text-yellow-500 font-medium transition">Kabar Santri</a>
-                <a href="#kajian" class="text-gray-700 hover:text-yellow-500 font-medium transition">Kajian</a>
-                <a href="#galeri" class="text-gray-700 hover:text-yellow-500 font-medium transition">Galeri</a>
-                <a href="tentang.html" class="text-gray-700 hover:text-yellow-500 font-medium transition">Profil</a>
-                <a href="https://instabio.cc/almuqoddasah25" class="bg-yellow-500 text-blue-900 font-bold px-6 py-3 rounded-lg hover:bg-yellow-400 transition">Kontak</a>
+                <a href="index.html" class="text-gray-700 hover:text-yellow-500 font-medium transition" 
+                   data-aos="fade-up" data-aos-delay="100">Home</a>
+                <a href="#berita-utama" class="text-gray-700 hover:text-yellow-500 font-medium transition" 
+                   data-aos="fade-up" data-aos-delay="200">Berita</a>
+                <a href="#pengumuman" class="text-gray-700 hover:text-yellow-500 font-medium transition" 
+                   data-aos="fade-up" data-aos-delay="300">Pengumuman</a>
+                <a href="#kabar-santri" class="text-gray-700 hover:text-yellow-500 font-medium transition" 
+                   data-aos="fade-up" data-aos-delay="400">Kabar Santri</a>
+                <a href="#kajian" class="text-gray-700 hover:text-yellow-500 font-medium transition" 
+                   data-aos="fade-up" data-aos-delay="500">Kajian</a>
+                <a href="#galeri" class="text-gray-700 hover:text-yellow-500 font-medium transition" 
+                   data-aos="fade-up" data-aos-delay="600">Galeri</a>
+                <a href="tentang.html" class="text-gray-700 hover:text-yellow-500 font-medium transition" 
+                   data-aos="fade-up" data-aos-delay="700">Profil</a>
+                <a href="https://instabio.cc/almuqoddasah25" 
+                   class="bg-yellow-500 text-blue-900 font-bold px-6 py-3 rounded-lg hover:bg-yellow-400 transition"
+                   data-aos="fade-up" data-aos-delay="800">Kontak</a>
             </nav>
 
             <!-- Mobile Menu Toggle -->
-            <button x-data @click="$dispatch('open-mobile-menu')" class="md:hidden text-gray-700">
+            <button x-data @click="$dispatch('open-mobile-menu')" class="md:hidden text-gray-700"
+                    data-aos="fade-left" data-aos-delay="300">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
         </div>
     </div>
 
-    <!-- Mobile Menu (Sidebar dari kanan) -->
+    <!-- Mobile Menu (Sidebar dari kanan) dengan animasi fade -->
     <div x-data="{ open: false }" @open-mobile-menu.window="open = true" class="md:hidden">
         <!-- Overlay -->
-        <div x-show="open" class="fixed inset-0 bg-black bg-opacity-50 z-50" @click="open = false"></div>
+        <div x-show="open" 
+             class="fixed inset-0 bg-black bg-opacity-50 z-50" 
+             @click="open = false"
+             data-aos="fade-in" data-aos-duration="300"></div>
         
         <!-- Sidebar -->
         <div x-show="open" 
-             class="fixed right-0 top-0 h-full w-64 bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out" 
-             :class="open ? 'translate-x-0' : 'translate-x-full'">
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="transform translate-x-full"
+             x-transition:enter-end="transform translate-x-0"
+             x-transition:leave="transition ease-in duration-300"
+             x-transition:leave-start="transform translate-x-0"
+             x-transition:leave-end="transform translate-x-full"
+             class="fixed right-0 top-0 h-full w-64 bg-white shadow-xl z-50"
+             data-aos="slide-left" data-aos-duration="500">
             <div class="p-6">
                 <button @click="open = false" class="mb-8 text-gray-700">
                     <i class="fas fa-times text-2xl"></i>
@@ -76,12 +102,12 @@
 </header>
 
 <!-- Berita Utama (Featured Berita MQ - Ma'had Al-Muqoddasah) -->
-<section id="berita-utama" class="container mx-auto px-4 py-12">
-    <h2 class="text-3xl font-bold text-blue-900 mb-8 text-center md:text-left">Berita Utama</h2>
+<section id="berita-utama" class="container mx-auto px-4 py-12" data-aos="fade-up" data-aos-duration="1000">
+    <h2 class="text-3xl font-bold text-blue-900 mb-8 text-center md:text-left" data-aos="fade-down" data-aos-delay="100">Berita Utama</h2>
     
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Artikel Utama Besar -->
-        <div class="md:col-span-2">
+        <div class="md:col-span-2" data-aos="fade-right" data-aos-delay="200">
             <a href="https://www.instagram.com/p/DQ5wsLGkoNB/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
                target="_blank"
                class="group block rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
@@ -105,7 +131,8 @@
         <div class="space-y-6">
             <!-- Artikel 1: -->
             <a href="https://www.instagram.com/p/DTEyVsskj5b/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" 
-               class="group flex gap-4 hover:bg-gray-100 p-4 -m-4 rounded-lg transition-colors duration-300">
+               class="group flex gap-4 hover:bg-gray-100 p-4 -m-4 rounded-lg transition-colors duration-300"
+               data-aos="fade-left" data-aos-delay="300">
                 <img src="kmd.png" alt="Pendaftaran Tahfidz 2026 Ma'had Al-Muqoddasah" class="w-32 h-32 object-cover rounded-lg">
                 <div>
                     <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition-colors line-clamp-3">
@@ -117,7 +144,8 @@
 
             <!-- Artikel 2: -->
             <a href="https://instabio.cc/almuqoddasah25" target="_blank" 
-               class="group flex gap-4 hover:bg-gray-100 p-4 -m-4 rounded-lg transition-colors duration-300">
+               class="group flex gap-4 hover:bg-gray-100 p-4 -m-4 rounded-lg transition-colors duration-300"
+               data-aos="fade-left" data-aos-delay="400">
                 <img src="ppsb.jpg" alt="Prestasi Santri Ma'had Al-Muqoddasah" class="w-32 h-32 object-cover rounded-lg">
                 <div>
                     <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition-colors line-clamp-3">
@@ -129,7 +157,8 @@
 
             <!-- Artikel 3: -->
             <a href="https://www.instagram.com/p/DSM_0I-ElCh/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" 
-               class="group flex gap-4 hover:bg-gray-100 p-4 -m-4 rounded-lg transition-colors duration-300">
+               class="group flex gap-4 hover:bg-gray-100 p-4 -m-4 rounded-lg transition-colors duration-300"
+               data-aos="fade-left" data-aos-delay="500">
                 <img src="ut.png" alt="Bina Iman Ma'had Al-Muqoddasah" class="w-32 h-32 object-cover rounded-lg">
                 <div>
                     <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition-colors line-clamp-3">
@@ -141,7 +170,7 @@
         </div>
     </div>
 
-    <div class="mt-10 text-center md:text-right">
+    <div class="mt-10 text-center md:text-right" data-aos="fade-up" data-aos-delay="600">
         <a href="tentang.html" class="hidden md:inline-block text-blue-900 font-semibold text-lg hover:underline">
             Lihat Semua Berita →
         </a>
@@ -152,79 +181,104 @@
 </section>
 
 <!-- Section Berita Terbaru MQ - Ma'had Al-Muqoddasah -->
-<section id="berita-utama" class="container mx-auto px-4 py-12 border-t-2 border-gray-300">
+<section class="container mx-auto px-4 py-12 border-t-2 border-gray-300" data-aos="fade-up" data-aos-duration="1000">
     <div class="flex justify-between items-center mb-8">
-        <h2 class="text-3xl font-bold text-blue-900">Berita Terbaru</h2>
-        <a href="tentang.html" class="hidden md:block text-blue-900 font-semibold hover:underline">Lihat Semua →</a>
+        <h2 class="text-3xl font-bold text-blue-900" data-aos="fade-down" data-aos-delay="100">Berita Terbaru</h2>
+        <a href="tentang.html" class="hidden md:block text-blue-900 font-semibold hover:underline" 
+           data-aos="fade-left" data-aos-delay="200">Lihat Semua →</a>
     </div>
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <!-- Card 1: Kursus Pramuka KMD (terbaru dari post IG) -->
-        <a href="https://www.instagram.com/p/DTEyVsskj5b/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="block group">
-            <img src="kmd.png" alt="Kursus Pembina Pramuka Mahir Dasar Ma'had Al-Muqoddasah" class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
+        <!-- Card 1 -->
+        <a href="https://www.instagram.com/p/DTEyVsskj5b/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" 
+           class="block group" 
+           data-aos="zoom-in-up" data-aos-delay="100">
+            <img src="kmd.png" alt="Kursus Pembina Pramuka Mahir Dasar Ma'had Al-Muqoddasah" 
+                 class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
             <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
                 Santri Ikuti Kursus Pembina Pramuka Mahir Tingkat Dasar (KMD)
             </h3>
             <time class="text-sm text-gray-500 block mt-2">4 Januari 2026</time>
         </a>
 
-        <!-- Card 2: Pendaftaran Santri Baru (kegiatan terkini) -->
-        <a href="https://instabio.cc/almuqoddasah25" target="_blank" class="block group">
-            <img src="ppsb.jpg" alt="Pendaftaran Santri Baru Ma'had Al-Muqoddasah 2025-2026" class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
+        <!-- Card 2 -->
+        <a href="https://instabio.cc/almuqoddasah25" target="_blank" 
+           class="block group" 
+           data-aos="zoom-in-up" data-aos-delay="200">
+            <img src="ppsb.jpg" alt="Pendaftaran Santri Baru Ma'had Al-Muqoddasah 2025-2026" 
+                 class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
             <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
                 Pendaftaran Santri Baru Tahun Ajaran 2025-2026 Dibuka
             </h3>
             <time class="text-sm text-gray-500 block mt-2">15 November 2025</time>
         </a>
 
-        <!-- Card 3: Ujian Tahfidz -->
-        <a href="https://www.instagram.com/p/DSM_0I-ElCh/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="block group">
-            <img src="ut.png" alt="Prestasi Santri Ma'had Al-Muqoddasah" class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
+        <!-- Card 3 -->
+        <a href="https://www.instagram.com/p/DSM_0I-ElCh/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" 
+           class="block group" 
+           data-aos="zoom-in-up" data-aos-delay="300">
+            <img src="ut.png" alt="Prestasi Santri Ma'had Al-Muqoddasah" 
+                 class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
             <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
                 Ujian tahfizh yang diadakan setiap akhir semester
             </h3>
             <time class="text-sm text-gray-500 block mt-2">13 Desember 2025</time>
         </a>
 
-        <!-- Card 4: Ujian Tengah Semester -->
-        <a href="https://www.instagram.com/p/DR_O_FIkkuC/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="block group">
-            <img src="uts.jpg" alt="Bina Iman dan Taqwa Ma'had Al-Muqoddasah" class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
+        <!-- Card 4 -->
+        <a href="https://www.instagram.com/p/DR_O_FIkkuC/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" 
+           class="block group" 
+           data-aos="zoom-in-up" data-aos-delay="400">
+            <img src="uts.jpg" alt="Bina Iman dan Taqwa Ma'had Al-Muqoddasah" 
+                 class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
             <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
                 Ujian Penilaian Akhir Semester Ganjil
             </h3>
             <time class="text-sm text-gray-500 block mt-2">2 Januari 2026</time>
         </a>
 
-        <!-- Card 5: Perfotoan Halaqoh Ngaji -->
-        <a href="https://www.instagram.com/p/DRb-yFIkrdX/?utm_source=ig_web_copy_link" target="_blank" class="block group">
-            <img src="Halaqoh.jpg" alt="Wisuda Hafidh Ma'had Al-Muqoddasah" class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
+        <!-- Card 5 -->
+        <a href="https://www.instagram.com/p/DRb-yFIkrdX/?utm_source=ig_web_copy_link" target="_blank" 
+           class="block group" 
+           data-aos="zoom-in-up" data-aos-delay="500">
+            <img src="Halaqoh.jpg" alt="Wisuda Hafidh Ma'had Al-Muqoddasah" 
+                 class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
             <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
                 Perfotoan Halaqoh Ngaji
             </h3>
             <time class="text-sm text-gray-500 block mt-2">24 November 2025</time>
         </a>
 
-        <!-- Card 6: Lentera -->
-        <a href="https://www.instagram.com/almuqoddasah_tv/" target="_blank" class="block group">
-            <img src="lentera.jpg" alt="Program Tahsin Dewasa Ma'had Al-Muqoddasah" class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
+        <!-- Card 6 -->
+        <a href="https://www.instagram.com/almuqoddasah_tv/" target="_blank" 
+           class="block group" 
+           data-aos="zoom-in-up" data-aos-delay="600">
+            <img src="lentera.jpg" alt="Program Tahsin Dewasa Ma'had Al-Muqoddasah" 
+                 class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
             <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
                 The Greatest Panggung Lentera 32 Al-Muqoddasah
             </h3>
             <time class="text-sm text-gray-500 block mt-2">10 November 2025</time>
         </a>
 
-        <!-- Card 7: TKA -->
-        <a href="https://www.instagram.com/p/DQmEJ9pEj14/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="block group">
-            <img src="TKA.jpg" alt="Refleksi Santri Ma'had Al-Muqoddasah" class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
+        <!-- Card 7 -->
+        <a href="https://www.instagram.com/p/DQmEJ9pEj14/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" 
+           class="block group" 
+           data-aos="zoom-in-up" data-aos-delay="700">
+            <img src="TKA.jpg" alt="Refleksi Santri Ma'had Al-Muqoddasah" 
+                 class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
             <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
                 TKA(Tes Kemampuan Akademik) dikhususkan kepada Siswa Akhir kelas 12
             </h3>
             <time class="text-sm text-gray-500 block mt-2">30 Desember 2025</time>
         </a>
 
-        <!-- Card 8: Pengajian Rutin -->
-        <a href="https://www.instagram.com/p/DQNjv1NElCJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="block group">
-            <img src="rekreasi.jpg" alt="Pengajian Rutin Ma'had Al-Muqoddasah" class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
+        <!-- Card 8 -->
+        <a href="https://www.instagram.com/p/DQNjv1NElCJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" 
+           class="block group" 
+           data-aos="zoom-in-up" data-aos-delay="800">
+            <img src="rekreasi.jpg" alt="Pengajian Rutin Ma'had Al-Muqoddasah" 
+                 class="w-full h-48 object-cover rounded-lg mb-3 group-hover:opacity-90 transition">
             <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
                 Rekreasi Tahunan Ma'had Al-Muqoddasah Li Tahfizhil Qu'an
             </h3>
@@ -232,7 +286,7 @@
         </a>
     </div>
 
-    <div class="mt-10 text-center md:hidden">
+    <div class="mt-10 text-center md:hidden" data-aos="fade-up" data-aos-delay="900">
         <a href="tentang.html" class="inline-block w-full bg-blue-900 text-white py-4 px-8 rounded-lg font-semibold hover:bg-blue-800 transition text-lg">
             Lihat Semua Berita
         </a>
@@ -240,18 +294,22 @@
 </section>
 
 <!-- Kegiatan & Pengumuman Terbaru MQ - Ma'had Al-Muqoddasah -->
-<section id="pengumuman" class="bg-gray-100 py-12">
+<section id="pengumuman" class="bg-gray-100 py-12" data-aos="fade-up" data-aos-duration="1000">
     <div class="container mx-auto px-4">
         <div class="text-center mb-10">
-            <h2 class="text-4xl font-bold text-blue-900 mb-3">Kegiatan & Pengumuman</h2>
-            <p class="text-gray-600 text-lg">Informasi terbaru seputar kegiatan, pengumuman, dan program di Ma'had Al-Muqoddasah Li Tahfizhil Qur'an</p>
+            <h2 class="text-4xl font-bold text-blue-900 mb-3" data-aos="fade-down" data-aos-delay="100">Kegiatan & Pengumuman</h2>
+            <p class="text-gray-600 text-lg" data-aos="fade-up" data-aos-delay="200">
+                Informasi terbaru seputar kegiatan, pengumuman, dan program di Ma'had Al-Muqoddasah Li Tahfizhil Qur'an
+            </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-            <!-- Featured Pengumuman Utama: Kursus Pramuka KMD (terbaru dari IG) -->
+            <!-- Featured Pengumuman Utama -->
             <a href="https://www.instagram.com/p/DSd7hELEplu/?utm_source=ig_web_copy_link" target="_blank" 
-               class="block rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                <img src="m1.jpg" alt="Kursus Pembina Pramuka Mahir Tingkat Dasar (KMD) di Ma'had Al-Muqoddasah" class="w-full h-96 object-cover">
+               class="block rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300"
+               data-aos="fade-right" data-aos-delay="300">
+                <img src="m1.jpg" alt="Kursus Pembina Pramuka Mahir Tingkat Dasar (KMD) di Ma'had Al-Muqoddasah" 
+                     class="w-full h-96 object-cover">
                 <div class="bg-gradient-to-t from-blue-900 to-transparent p-8 text-white">
                     <span class="bg-yellow-500 text-blue-900 px-4 py-1 rounded text-sm font-bold inline-block mb-4">PENGUMUMAN</span>
                     <h3 class="text-3xl font-bold leading-tight mb-4">
@@ -266,9 +324,10 @@
 
             <!-- List Kegiatan/Pengumuman Kecil -->
             <div class="space-y-6">
-                <!-- Item 1: Pendaftaran Santri Baru (masih relevan dari tahun sebelumnya, link bio pendaftaran) -->
+                <!-- Item 1 -->
                 <a href="https://instabio.cc/almuqoddasah25" target="_blank" 
-                   class="flex gap-4 items-start hover:bg-white p-4 -m-4 rounded-lg transition-colors duration-300">
+                   class="flex gap-4 items-start hover:bg-white p-4 -m-4 rounded-lg transition-colors duration-300"
+                   data-aos="fade-left" data-aos-delay="400">
                     <img src="m2.jpg" alt="Pendaftaran Santri Baru Ma'had Al-Muqoddasah" class="w-32 h-32 object-cover rounded-lg">
                     <div>
                         <h4 class="font-bold text-lg leading-tight hover:text-yellow-500 transition-colors">
@@ -278,9 +337,10 @@
                     </div>
                 </a>
 
-                <!-- Item 2: Jadwal Wisuda atau Sosialisasi Hafalan -->
+                <!-- Item 2 -->
                 <a href="https://www.instagram.com/almuqoddasah_tv/" target="_blank" 
-                   class="flex gap-4 items-start hover:bg-white p-4 -m-4 rounded-lg transition-colors duration-300">
+                   class="flex gap-4 items-start hover:bg-white p-4 -m-4 rounded-lg transition-colors duration-300"
+                   data-aos="fade-left" data-aos-delay="500">
                     <img src="m3.jpg" alt="Wisuda Tahfidz Ma'had Al-Muqoddasah" class="w-32 h-32 object-cover rounded-lg">
                     <div>
                         <h4 class="font-bold text-lg leading-tight hover:text-yellow-500 transition-colors">
@@ -290,11 +350,11 @@
                     </div>
                 </a>
 
-        
+                <!-- Jika nanti ada item ke-3, ke-4, dst., bisa tambah delay +100 tiap item -->
             </div>
         </div>
 
-        <div class="text-center mt-10">
+        <div class="text-center mt-10" data-aos="fade-up" data-aos-delay="600">
             <a href="tentang.html" class="border border-blue-900 text-blue-900 font-bold py-4 px-10 rounded-lg inline-block hover:bg-blue-50 transition text-lg">
                 Lihat Semua Pengumuman
             </a>
@@ -303,18 +363,21 @@
 </section>
 
 <!-- Kabar Santri & Pesantren MQ -->
-<section id="kabar-santri" class="bg-blue-900 text-white py-12">
+<section id="kabar-santri" class="bg-blue-900 text-white py-12" data-aos="fade-up" data-aos-duration="1000">
     <div class="container mx-auto px-4">
         <div class="flex justify-between items-center mb-8">
-            <h2 class="text-4xl font-bold text-yellow-400">Kabar Santri</h2>
-            <a href="tentang.html" class="hidden md:block hover:underline text-yellow-400 font-semibold">Lihat Semua →</a>
+            <h2 class="text-4xl font-bold text-yellow-400" data-aos="fade-down" data-aos-delay="100">Kabar Santri</h2>
+            <a href="tentang.html" class="hidden md:block hover:underline text-yellow-400 font-semibold" 
+               data-aos="fade-left" data-aos-delay="200">Lihat Semua →</a>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Featured Kabar Santri -->
-            <div class="md:col-span-1">
-                <a href="https://www.instagram.com/p/DQCAXn3Ej2c/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="block group">
-                    <img src="haflah1.jpg" alt="Wisuda Hafiz Quran Ponpes MQ" class="w-full rounded-lg mb-4 group-hover:opacity-90 transition">
+            <!-- Featured Kabar Santri (kolom kiri) -->
+            <div class="md:col-span-1" data-aos="fade-right" data-aos-delay="300">
+                <a href="https://www.instagram.com/p/DQCAXn3Ej2c/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" 
+                   target="_blank" class="block group">
+                    <img src="haflah1.jpg" alt="Wisuda Hafiz Quran Ponpes MQ" 
+                         class="w-full rounded-lg mb-4 group-hover:opacity-90 transition">
                     <h3 class="text-2xl font-bold leading-tight group-hover:text-yellow-400 transition">
                         Wisuda Akbar Haflah Khotmil Qur'an Angkatan Ke-22
                     </h3>
@@ -322,11 +385,15 @@
                 </a>
             </div>
 
-            <!-- List Kabar Kecil -->
+            <!-- List Kabar Kecil (kolom kanan) -->
             <div class="md:col-span-2 space-y-8">
                 <!-- Item 1 -->
-                <a href="https://www.instagram.com/p/DQAy7Akkk9L/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="flex gap-6 items-start hover:opacity-90 transition group">
-                    <img src="milad.jpg" alt="Santri Berprestasi MHQ" class="w-36 h-36 object-cover rounded-lg group-hover:opacity-90 transition">
+                <a href="https://www.instagram.com/p/DQAy7Akkk9L/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" 
+                   target="_blank" 
+                   class="flex gap-6 items-start hover:opacity-90 transition group"
+                   data-aos="fade-left" data-aos-delay="400">
+                    <img src="milad.jpg" alt="Santri Berprestasi MHQ" 
+                         class="w-36 h-36 object-cover rounded-lg group-hover:opacity-90 transition">
                     <div>
                         <h4 class="text-xl font-bold group-hover:text-yellow-400 transition">
                             Ma'had Al-Muqoddasah Li Tahfizhil Quran mengadakan rentetan acara dalam memperingati Milad yang ke-33 tahun
@@ -336,8 +403,12 @@
                 </a>
 
                 <!-- Item 2 -->
-                <a href="https://www.instagram.com/p/DOQ5WW2kvin/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="flex gap-6 items-start hover:opacity-90 transition group">
-                    <img src="maulid nabi.jpg" alt="Kegiatan Malam Bina Iman" class="w-36 h-36 object-cover rounded-lg group-hover:opacity-90 transition">
+                <a href="https://www.instagram.com/p/DOQ5WW2kvin/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" 
+                   target="_blank" 
+                   class="flex gap-6 items-start hover:opacity-90 transition group"
+                   data-aos="fade-left" data-aos-delay="500">
+                    <img src="maulid nabi.jpg" alt="Kegiatan Malam Bina Iman" 
+                         class="w-36 h-36 object-cover rounded-lg group-hover:opacity-90 transition">
                     <div>
                         <h4 class="text-xl font-bold group-hover:text-yellow-400 transition">
                             Ma'had Al-Muqoddasah Li Tahfizhil Qur'an memperingati Maulid Nabi Muhammad SAW
@@ -347,8 +418,12 @@
                 </a>
 
                 <!-- Item 3 -->
-                <a href="https://www.instagram.com/p/DOOg8DzEkSN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="flex gap-6 items-start hover:opacity-90 transition group">
-                    <img src="manasik.jpg" alt="Santri Baru MQ" class="w-36 h-36 object-cover rounded-lg group-hover:opacity-90 transition">
+                <a href="https://www.instagram.com/p/DOOg8DzEkSN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" 
+                   target="_blank" 
+                   class="flex gap-6 items-start hover:opacity-90 transition group"
+                   data-aos="fade-left" data-aos-delay="600">
+                    <img src="manasik.jpg" alt="Santri Baru MQ" 
+                         class="w-36 h-36 object-cover rounded-lg group-hover:opacity-90 transition">
                     <div>
                         <h4 class="text-xl font-bold group-hover:text-yellow-400 transition">
                             SD Al-Muqoddasah dari santri/ah kelas 5 dan 6 ikut serta dalam kegiatan manasik haji yang diselenggarakan oleh petugas pembimbing kecamatan Mlarak
@@ -357,9 +432,13 @@
                     </div>
                 </a>
 
-                <!-- Item 4 (opsional, tambah kalau mau) -->
-                <a href="https://www.instagram.com/p/DNlFfSZSN8-/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="flex gap-6 items-start hover:opacity-90 transition group">
-                    <img src="khotimin.jpg" alt="Kegiatan Olahraga Santri" class="w-36 h-36 object-cover rounded-lg group-hover:opacity-90 transition">
+                <!-- Item 4 -->
+                <a href="https://www.instagram.com/p/DNlFfSZSN8-/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" 
+                   target="_blank" 
+                   class="flex gap-6 items-start hover:opacity-90 transition group"
+                   data-aos="fade-left" data-aos-delay="700">
+                    <img src="khotimin.jpg" alt="Kegiatan Olahraga Santri" 
+                         class="w-36 h-36 object-cover rounded-lg group-hover:opacity-90 transition">
                     <div>
                         <h4 class="text-xl font-bold group-hover:text-yellow-400 transition">
                             Ujian Khotmil Qur'an Gelombang Ke-3 dengan khidmat dan penuh kesakralan
@@ -373,16 +452,18 @@
 </section>
 
 <!-- Section Kajian & Artikel -->
-<section id="kajian" class="container mx-auto px-4 py-12 border-t-2 border-gray-300">
+<section id="kajian" class="container mx-auto px-4 py-12 border-t-2 border-gray-300" data-aos="fade-up" data-aos-duration="1000">
     <div class="flex justify-between items-center mb-8">
-        <h2 class="text-3xl font-bold text-blue-900">Kajian & Artikel</h2>
-        <a href="tentang.html" class="text-blue-900 font-semibold hover:underline">Lihat Semua →</a>
+        <h2 class="text-3xl font-bold text-blue-900" data-aos="fade-down" data-aos-delay="100">Kajian & Artikel</h2>
+        <a href="tentang.html" class="text-blue-900 font-semibold hover:underline" 
+           data-aos="fade-left" data-aos-delay="200">Lihat Semua →</a>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Featured Kajian Kiri (dengan foto besar) -->
-        <div class="md:col-span-1">
-            <a href="https://www.instagram.com/p/CqFL2EFrE0A/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="block group">
+        <div class="md:col-span-1" data-aos="fade-right" data-aos-delay="300">
+            <a href="https://www.instagram.com/p/CqFL2EFrE0A/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" 
+               target="_blank" class="block group">
                 <img src="Inpirasi Ust Hasan 1.jpg" 
                      alt="Ustadz/Ustadzah Ponpes MQ" 
                      class="w-full h-96 object-cover rounded-lg mb-6 group-hover:opacity-90 transition">
@@ -396,7 +477,11 @@
         <!-- List Kajian Kanan -->
         <div class="md:col-span-2 space-y-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <a href="https://www.instagram.com/p/CqPY7Iurmse/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group flex gap-4 items-start hover:bg-gray-50 p-4 -m-4 rounded-lg transition-colors duration-300">
+                <!-- Item 1 -->
+                <a href="https://www.instagram.com/p/CqPY7Iurmse/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" 
+                   target="_blank" 
+                   class="group flex gap-4 items-start hover:bg-gray-50 p-4 -m-4 rounded-lg transition-colors duration-300"
+                   data-aos="fade-left" data-aos-delay="400">
                   <img src="ust yusron.jpg" alt="Ustadz Zidanizdan Yahya Fillahi" class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
                   <div>
                       <h4 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
@@ -406,7 +491,11 @@
                   </div>
                </a>
 
-                <a href="https://www.instagram.com/p/Cq-Ir_mLxKV/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group flex gap-4 items-start hover:bg-gray-50 p-4 -m-4 rounded-lg transition-colors duration-300">
+                <!-- Item 2 -->
+                <a href="https://www.instagram.com/p/Cq-Ir_mLxKV/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" 
+                   target="_blank" 
+                   class="group flex gap-4 items-start hover:bg-gray-50 p-4 -m-4 rounded-lg transition-colors duration-300"
+                   data-aos="fade-left" data-aos-delay="500">
                   <img src="ust hanif.jpg" alt="Ustadz Zidanizdan Yahya Fillahi" class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
                   <div>
                       <h4 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
@@ -416,7 +505,11 @@
                   </div>
                </a>
 
-               <a href="https://www.instagram.com/p/Cq2W6_9L8ua/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group flex gap-4 items-start hover:bg-gray-50 p-4 -m-4 rounded-lg transition-colors duration-300">
+                <!-- Item 3 -->
+                <a href="https://www.instagram.com/p/Cq2W6_9L8ua/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" 
+                   target="_blank" 
+                   class="group flex gap-4 items-start hover:bg-gray-50 p-4 -m-4 rounded-lg transition-colors duration-300"
+                   data-aos="fade-left" data-aos-delay="600">
                   <img src="ust fatur.jpg" alt="Ustadz Zidanizdan Yahya Fillahi" class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
                   <div>
                       <h4 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
@@ -426,7 +519,11 @@
                   </div>
                </a>
 
-                <a href="https://www.instagram.com/p/Cq2W6_9L8ua/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group flex gap-4 items-start hover:bg-gray-50 p-4 -m-4 rounded-lg transition-colors duration-300">
+                <!-- Item 4 -->
+                <a href="https://www.instagram.com/p/Cq2W6_9L8ua/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" 
+                   target="_blank" 
+                   class="group flex gap-4 items-start hover:bg-gray-50 p-4 -m-4 rounded-lg transition-colors duration-300"
+                   data-aos="fade-left" data-aos-delay="700">
                   <img src="ust ryan.jpg" alt="Ustadz Zidanizdan Yahya Fillahi" class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
                   <div>
                       <h4 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
@@ -436,7 +533,11 @@
                   </div>
                </a>
 
-               <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" target="_blank" class="group flex gap-4 items-start hover:bg-gray-50 p-4 -m-4 rounded-lg transition-colors duration-300">
+                <!-- Item 5 -->
+                <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" 
+                   target="_blank" 
+                   class="group flex gap-4 items-start hover:bg-gray-50 p-4 -m-4 rounded-lg transition-colors duration-300"
+                   data-aos="fade-left" data-aos-delay="800">
                   <img src="ust zidan.jpg" alt="Ustadz Zidanizdan Yahya Fillahi" class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
                   <div>
                       <h4 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
@@ -451,15 +552,19 @@
 </section>
 
 <!-- Section Galeri Foto MQ -->
-<section id="galeri" class="container mx-auto px-4 py-12 border-t-2 border-gray-300">
+<section id="galeri" class="container mx-auto px-4 py-12 border-t-2 border-gray-300" data-aos="fade-up" data-aos-duration="1000">
     <div class="flex justify-between items-center mb-8">
-        <h2 class="text-3xl font-bold text-blue-900">Galeri Foto</h2>
-        <a href="tentang.html" class="text-blue-900 font-semibold hover:underline">Lihat Semua →</a>
+        <h2 class="text-3xl font-bold text-blue-900" data-aos="fade-down" data-aos-delay="100">Galeri Foto</h2>
+        <a href="tentang.html" class="text-blue-900 font-semibold hover:underline" 
+           data-aos="fade-left" data-aos-delay="200">Lihat Semua →</a>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Foto 1 -->
-        <a href="https://www.instagram.com/p/DMW81P6ywZQ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group block overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+        <a href="https://www.instagram.com/p/DMW81P6ywZQ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" 
+           target="_blank" 
+           class="group block overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
+           data-aos="flip-up" data-aos-delay="300">
             <img src="apel ta'aruf.jpg" 
                  alt="Wisuda Tahfidz 30 Juz Ponpes MQ Tebuireng 2026" 
                  class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
@@ -472,7 +577,10 @@
         </a>
 
         <!-- Foto 2 -->
-        <a href="https://www.instagram.com/p/DL-X02nyGA3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group block overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+        <a href="https://www.instagram.com/p/DL-X02nyGA3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" 
+           target="_blank" 
+           class="group block overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
+           data-aos="flip-up" data-aos-delay="400">
             <img src="tahun ajaran baru.jpg" 
                  alt="Pelepasan Santri Hafiz Quran Ponpes MQ" 
                  class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
@@ -485,7 +593,10 @@
         </a>
 
         <!-- Foto 3 -->
-        <a href="https://www.instagram.com/p/DMPG8EtSZUa/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group block overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+        <a href="https://www.instagram.com/p/DMPG8EtSZUa/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" 
+           target="_blank" 
+           class="group block overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
+           data-aos="flip-up" data-aos-delay="500">
             <img src="mpls.jpg" 
                  alt="Masa Pengenalan Lingkungan Sekolah (MPLS)" 
                  class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
@@ -498,7 +609,10 @@
         </a>
 
         <!-- Foto 4 -->
-        <a href="https://www.instagram.com/p/DL1Cr62yYvn/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group block overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+        <a href="https://www.instagram.com/p/DL1Cr62yYvn/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" 
+           target="_blank" 
+           class="group block overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
+           data-aos="flip-up" data-aos-delay="600">
             <img src="expo.jpg" 
                  alt="Expo Muharram Santri dibuka oleh Al-Ustadz H. Saidil Yusron, Lc., M.A" 
                  class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
@@ -511,7 +625,10 @@
         </a>
 
         <!-- Foto 5 -->
-        <a href="https://www.instagram.com/p/DLggDclSDWH/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group block overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+        <a href="https://www.instagram.com/p/DLggDclSDWH/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" 
+           target="_blank" 
+           class="group block overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
+           data-aos="flip-up" data-aos-delay="700">
             <img src="HBI.jpg" 
                  alt="Pengajian Rutin Bulanan Ponpes MQ" 
                  class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
@@ -524,7 +641,10 @@
         </a>
 
         <!-- Foto 6 -->
-        <a href="https://www.instagram.com/p/DO81vF5Et-K/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group block overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+        <a href="https://www.instagram.com/p/DO81vF5Et-K/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" 
+           target="_blank" 
+           class="group block overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
+           data-aos="flip-up" data-aos-delay="800">
             <img src="kemah.jpg" 
                  alt="Kedatangan Santri Baru Ponpes MQ" 
                  class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
@@ -539,16 +659,18 @@
 </section>
 
 <!-- Section Inspirasi MQ -->
-<section id="inspirasi" class="container mx-auto px-4 py-12 border-t-2 border-gray-300">
+<section id="inspirasi" class="container mx-auto px-4 py-12 border-t-2 border-gray-300" data-aos="fade-up" data-aos-duration="1000">
     <div class="flex justify-between items-center mb-8">
-        <h2 class="text-3xl font-bold text-blue-900">Inspirasi</h2>
-        <a href="tentang.html" class="text-blue-900 font-semibold hover:underline">Lihat Semua →</a>
+        <h2 class="text-3xl font-bold text-blue-900" data-aos="fade-down" data-aos-delay="100">Inspirasi</h2>
+        <a href="tentang.html" class="text-blue-900 font-semibold hover:underline" 
+           data-aos="fade-left" data-aos-delay="200">Lihat Semua →</a>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Featured Inspirasi Kiri (besar) -->
-        <div class="md:col-span-1">
-            <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" target="_blank" class="group block">
+        <div class="md:col-span-1" data-aos="fade-right" data-aos-delay="300">
+            <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" 
+               target="_blank" class="group block">
                 <img src="foto.jpg" 
                      alt="Kisah Santri MQ Hafal 30 Juz dalam 2 Tahun" 
                      class="w-full h-full object-cover rounded-lg mb-4 group-hover:opacity-90 transition">
@@ -562,8 +684,13 @@
         <!-- List Inspirasi Kanan -->
         <div class="md:col-span-2 space-y-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" target="_blank" class="group flex items-start gap-4 hover:bg-gray-50 p-2 -m-2 rounded-lg transition">
-                    <img src="foto.jpg" alt="Santri MQ Juara Internasional" class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
+                <!-- Item 1 -->
+                <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" 
+                   target="_blank" 
+                   class="group flex items-start gap-4 hover:bg-gray-50 p-2 -m-2 rounded-lg transition"
+                   data-aos="fade-left" data-aos-delay="400">
+                    <img src="foto.jpg" alt="Santri MQ Juara Internasional" 
+                         class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
                     <div>
                         <h4 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
                             Alumni 2023 sudah berada di tanah yaman untuk melanjutkan study
@@ -572,8 +699,13 @@
                     </div>
                 </a>
 
-                <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" target="_blank" class="group flex items-start gap-4 hover:bg-gray-50 p-2 -m-2 rounded-lg transition">
-                    <img src="foto.jpg" alt="Ustadz Pengayah MQ" class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
+                <!-- Item 2 -->
+                <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" 
+                   target="_blank" 
+                   class="group flex items-start gap-4 hover:bg-gray-50 p-2 -m-2 rounded-lg transition"
+                   data-aos="fade-left" data-aos-delay="500">
+                    <img src="foto.jpg" alt="Ustadz Pengayah MQ" 
+                         class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
                     <div>
                         <h4 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
                             Santri MQ umur 8 tahun sudah hafal 10 juz
@@ -582,8 +714,13 @@
                     </div>
                 </a>
 
-                <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" target="_blank" class="group flex items-start gap-4 hover:bg-gray-50 p-2 -m-2 rounded-lg transition">
-                    <img src="foto.jpg" alt="Santri MQ Lulusan Terbaik" class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
+                <!-- Item 3 -->
+                <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" 
+                   target="_blank" 
+                   class="group flex items-start gap-4 hover:bg-gray-50 p-2 -m-2 rounded-lg transition"
+                   data-aos="fade-left" data-aos-delay="600">
+                    <img src="foto.jpg" alt="Santri MQ Lulusan Terbaik" 
+                         class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
                     <div>
                         <h4 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
                             Lulusan MQ Diterima Universitas Al-Azhar: Kisah Dedikasi dan Doa
@@ -592,8 +729,13 @@
                     </div>
                 </a>
 
-                <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" target="_blank" class="group flex items-start gap-4 hover:bg-gray-50 p-2 -m-2 rounded-lg transition">
-                    <img src="foto.jpg" alt="Kegiatan Sosial Santri MQ" class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
+                <!-- Item 4 -->
+                <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" 
+                   target="_blank" 
+                   class="group flex items-start gap-4 hover:bg-gray-50 p-2 -m-2 rounded-lg transition"
+                   data-aos="fade-left" data-aos-delay="700">
+                    <img src="foto.jpg" alt="Kegiatan Sosial Santri MQ" 
+                         class="w-32 h-32 object-cover rounded-lg group-hover:opacity-90 transition">
                     <div>
                         <h4 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-3">
                             Alumni gelar kebersamaan bersama sekitar dengan berbuka bersama disambi tausiah
@@ -602,7 +744,11 @@
                     </div>
                 </a>
 
-                <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" target="_blank" class="group block col-span-2 hover:bg-gray-50 p-2 -m-2 rounded-lg transition">
+                <!-- Item 5 (full width) -->
+                <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" 
+                   target="_blank" 
+                   class="group block col-span-2 hover:bg-gray-50 p-2 -m-2 rounded-lg transition"
+                   data-aos="fade-left" data-aos-delay="800">
                     <h4 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition">
                         Motivasi dari Para Hafiz: Bagaimana Al-Qur'an Mengubah Hidup Saya
                     </h4>
@@ -614,16 +760,22 @@
 </section>
 
 <!-- Section Profil Pengasuh & Tokoh MQ -->
-<section class="container mx-auto px-4 py-12 border-t-2 border-gray-300">
+<section class="container mx-auto px-4 py-12 border-t-2 border-gray-300" data-aos="fade-up" data-aos-duration="1000">
     <div class="flex justify-between items-center mb-8">
-        <h2 class="text-3xl font-bold text-blue-900">Profil Pengasuh & Tokoh</h2>
-        <a href="tentang.html" class="text-blue-900 font-semibold hover:underline">Lihat Semua →</a>
+        <h2 class="text-3xl font-bold text-blue-900" data-aos="fade-down" data-aos-delay="100">Profil Pengasuh & Tokoh</h2>
+        <a href="tentang.html" class="text-blue-900 font-semibold hover:underline" 
+           data-aos="fade-left" data-aos-delay="200">Lihat Semua →</a>
     </div>
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
         <!-- Profil 1 -->
-        <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" target="_blank" class="group block overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-            <img src="KH. Hasan Abdullah Sahal.jpeg" alt="KH. Anwar Iskandar" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+        <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" 
+           target="_blank" 
+           class="group block overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+           data-aos="zoom-in" data-aos-delay="300">
+            <img src="img/KH. Hasan Abdullah Sahal.jpeg" 
+                 alt="KH. Anwar Iskandar" 
+                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
             <div class="p-4 bg-white">
                 <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-2">
                     KH. Hasan Abdullah Sahal
@@ -633,8 +785,13 @@
         </a>
 
         <!-- Profil 2 -->
-        <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" target="_blank" class="group block overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-            <img src="foto.jpg" alt="KH. Yusuf Mansur" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+        <a href="https://www.instagram.com/almuqoddasah_tv/p/DOOg8DzEkSN/" 
+           target="_blank" 
+           class="group block overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+           data-aos="zoom-in" data-aos-delay="400">
+            <img src="foto.jpg" 
+                 alt="KH. Yusuf Mansur" 
+                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
             <div class="p-4 bg-white">
                 <h3 class="font-bold text-lg leading-tight group-hover:text-yellow-500 transition line-clamp-2">
                     K.H. Heikal Yanuarshah Ibadillah, S.E., M.Si.
@@ -643,6 +800,7 @@
             </div>
         </a>
 
+        <!-- Jika nanti ada profil ke-3, ke-4, dst., tinggal tambah delay +100 ms -->
     </div>
 </section>
 
@@ -995,6 +1153,16 @@
     </div>
 </footer>
 
+<!-- AOS JavaScript (taruh sebelum </body>) -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true, // Animasi hanya sekali
+        offset: 50
+    });
+</script>
+
 </body>
 </html>
-
